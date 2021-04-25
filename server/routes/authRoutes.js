@@ -19,3 +19,5 @@ module.exports = app => {
     res.send(req.user);
   });
 };
+
+// mongodb+srv://myuser:123@cluster0.4nm4l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
