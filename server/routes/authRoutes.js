@@ -20,4 +20,4 @@ module.exports = app => {
   });
 };
 
-// mongodb+srv://myuser:123@cluster0.4nm4l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+//

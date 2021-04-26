@@ -9,3 +9,5 @@ module.exports = {
     "mongodb+srv://ghbr:ybEMRtnAvjoavJdH@emaily.vlnan.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   cookieKey: "redacted",
 };
+
+// git push heroku HEAD:master
