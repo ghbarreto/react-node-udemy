@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import Payments from "./Payments";
+
 class Header extends Component {
   renderContent() {
     // helper function to return either log out or log in
@@ -16,11 +18,18 @@ class Header extends Component {
           </li>
         );
       default:
-        return (
-          <li>
+        return [
+          // displaying the payment component, credits and the logout button if user is online
+          <li key="1">
+            <Payments />
+          </li>,
+          <li key="2" style={{ margin: "0 10px" }}>
+            Credits: {this.props.auth.credits}
+          </li>,
+          <li key="3">
             <a href="/api/logout">Logout</a>
-          </li>
-        );
+          </li>,
+        ];
     }
   }
 
