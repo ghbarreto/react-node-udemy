@@ -9,8 +9,6 @@ import Header from "./Header";
 import Dashboard from "./Dashboard";
 import Landing from "./Landing";
 
-const SurveyNew = () => <h2>SurveyNew</h2>;
-
 class App extends React.Component {
   // wiring up action creators inside the app component
   componentDidMount() {
@@ -20,6 +18,7 @@ class App extends React.Component {
 
   render() {
     return (
+      // creating the browser route
       <div className="container">
         <BrowserRouter>
           <Header />
