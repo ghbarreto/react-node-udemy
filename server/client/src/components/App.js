@@ -24,7 +24,6 @@ class App extends React.Component {
           <Header />
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />
-          <Route exact path="/surveys/new" component={SurveyNew} />
         </BrowserRouter>
       </div>
     );
