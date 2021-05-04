@@ -12,6 +12,9 @@ module.exports = {
     "pk_test_51Ilai9ES60JkxAQeRO3SEycwslslM2sp0N4U9SbepgtappDAN6HDf34FCeiR9OCMebn1zyN8SiOqKnTcgIQgA5Cl00U6liGiX2",
   stripeSecretKey:
     "sk_test_51Ilai9ES60JkxAQea1LVZ819kwnbVuzngBUGkj2169YsdBFTagA5P3SAJuDWPY1gVsd46ndYAlNbbvsDBmPRJkzE00LY0rNlFb",
+  sendGridKey:
+    "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",
+  redirectDomain: "http://localhost:3000",
 };
 
 // git push heroku HEAD:master
