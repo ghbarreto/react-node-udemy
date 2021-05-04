@@ -4,7 +4,9 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const keys = require("./config/keys");
 
+// requiring the models
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI, {
@@ -32,6 +34,8 @@ app.use(passport.session());
 require("./routes/authRoutes")(app);
 // initializing the billing routes
 require("./routes/billingRoutes")(app);
+// initializing the survey routes;
+require("./routes/surveyRoutes")(app);
 
 // this will only run when the app is in production
 if (process.env.NODE_ENV === "production") {
