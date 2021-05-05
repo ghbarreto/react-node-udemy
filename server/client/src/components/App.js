@@ -8,6 +8,7 @@ import * as actions from "../actions";
 import Header from "./Header";
 import Dashboard from "./Dashboard";
 import Landing from "./Landing";
+import SurveyNew from "./surveys/SurveyNew";
 
 class App extends React.Component {
   // wiring up action creators inside the app component
@@ -24,6 +25,7 @@ class App extends React.Component {
           <Header />
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />
+          <Route exact path="/surveys/new" component={SurveyNew} />
         </BrowserRouter>
       </div>
     );
