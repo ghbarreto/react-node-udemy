@@ -1,14 +1,30 @@
 // survey new creates a new form
 import React from "react";
 import SurveyForm from "./SurveyForm";
+import SurveyFormReview from "./SurveyFormReview";
 
 class SurveyNew extends React.Component {
-  render() {
+  state = { showFormReview: false };
+
+  renderContent() {
+    if (this.state.showFormReview === true) {
+      return (
+        <SurveyFormReview
+          onCancel={() => this.setState({ showFormReview: false })}
+        />
+      );
+    }
+
     return (
-      <div>
-        <SurveyForm />
-      </div>
+      <SurveyForm
+        // after form is submitted, show the SurveyFormReview
+        onSurveySubmit={() => this.setState({ showFormReview: true })}
+      />
     );
+  }
+
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 

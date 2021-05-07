@@ -20,14 +20,14 @@ class App extends React.Component {
   render() {
     return (
       // creating the browser route
-      <div className="container">
-        <BrowserRouter>
-          <Header />
+      <BrowserRouter>
+        <Header />
+        <div className="container">
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />
           <Route exact path="/surveys/new" component={SurveyNew} />
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }
