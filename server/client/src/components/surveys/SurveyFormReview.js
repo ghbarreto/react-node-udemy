@@ -3,11 +3,12 @@ import React from "react";
 import _ from "lodash";
 import { connect } from "react-redux";
 import formFields from "./formFields";
+import { withRouter } from "react-router-dom";
 import * as actions from "../../actions";
 
 // onCancel was sent as a prop, everytime the user clicks on the button
 // it switches the state value to false, causing the form review to disappear
-const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   const reviewFormFields = _.map(formFields, field => {
     return (
       <div key={field.name}>
@@ -28,7 +29,8 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
         Back
       </button>
       <button
-        onClick={() => submitSurvey(formValues)}
+        // pass the action creator the history object to be able to navigate around our application
+        onClick={() => submitSurvey(formValues, history)}
         className="green btn-flat right white-text"
       >
         Send Survey <i className="material-icons right">email</i>
@@ -42,4 +44,10 @@ function mapStateToProps(state) {
   return { formValues: state.form.surveyForm.values };
 }
 
-export default connect(mapStateToProps, actions)(SurveyFormReview);
+export default connect(
+  mapStateToProps,
+  actions
+)(
+  // this allows us to be able to redirect after doing something
+  withRouter(SurveyFormReview)
+);
