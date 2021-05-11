@@ -20,9 +20,13 @@ module.exports = app => {
   });
 
   // getting the surveys created from an user
-  app.get('/api/surveys/', (req, res) => {
-    
-  })
+  app.get("/api/surveys/", requireLogin, async (req, res) => {
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false,
+    });
+
+    res.send(surveys);
+  });
 
   // logic to receive values from sendgrid
   app.post("/api/surveys/webhooks", (req, res) => {
@@ -37,10 +41,10 @@ module.exports = app => {
       })
       .compact()
       .uniqBy("email", "surveyId")
-      .each(event => {
+      .each(({ surveyId, email, choice }) => {
         Survey.updateOne(
           {
-            id: surveyId,
+            _id: surveyId,
             recipients: {
               $elemMatch: { email: email, responded: false },
             },
@@ -49,7 +53,7 @@ module.exports = app => {
             $inc: { [choice]: 1 },
             $set: { "recipients.$.responded": true },
           }
-        );
+        ).exec();
       })
       .value();
     res.send({});
