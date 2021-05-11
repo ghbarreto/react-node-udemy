@@ -18,6 +18,12 @@ module.exports = app => {
   app.get("/api/surveys/thanks", (req, res) => {
     res.send("Thank you so much for voting!");
   });
+
+  // getting the surveys created from an user
+  app.get('/api/surveys/', (req, res) => {
+    
+  })
+
   // logic to receive values from sendgrid
   app.post("/api/surveys/webhooks", (req, res) => {
     // Path retrieves the data from the URL when using /:
